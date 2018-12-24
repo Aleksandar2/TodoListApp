@@ -1,3 +1,3 @@
 # TodoListApp
-Todo app built with vanilla JS
-Preview at: https://codepen.io/Aleksandar4/pen/REVXLx
+Todo app built with vanilla JS, 
+preview at: https://codepen.io/Aleksandar4/pen/REVXLx
