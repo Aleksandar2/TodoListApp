@@ -1,0 +1,91 @@
+body {
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #eee; /* Lightblue */
+  font-family: tahoma, sans-serif;
+}
+
+h1 {
+  font-weight: 100;
+  color: brown;
+}
+
+ul {
+  padding-left: 0;
+  min-width: 50%;
+}
+
+li {
+  padding: 10px;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 10px 50px black;
+  margin-top: 10px;
+  -webkit-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease;
+  overflow: auto;
+}
+
+li:hover {
+  box-shadow: 0 10px 50px 3px black;
+}
+
+li button {
+  float: right;
+}
+
+button {
+  background-color: #bbb; /* Darkgrey */
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 5px;
+  -webkit-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #d8d2d2; /* Grey */
+  color: brown;
+}
+
+/* Input for adding new todos */
+#addTodoTextInput {
+  width: 50%;
+  margin-bottom: 20px;
+  height: 20px;
+}
+
+/* Input for editing todos */
+#editTodoInput {
+  background-color: white;
+  color: black;
+  border: none;
+  min-width: 65%;
+}
+
+@media only screen and (max-width: 920px) {
+  #addTodoTextInput,
+  #editTodoInput,
+  ul {
+     width: 80%;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  #addTodoTextInput,
+  #editTodoInput,
+  ul {
+     width: 100%;
+  }
+}
