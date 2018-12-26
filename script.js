@@ -7,16 +7,16 @@ var todoButtons = {
       this.todos.push({
       todoText: addTodoTextInput.value,
       completed: false
-    });
+      });
       // Reseting value after user input
       addTodoTextInput.value = '';
       todoView.displayTodos();
     }
   },
-  changeTodo: function(position, newTodoText) {
-		this.todos[position].todoText = newTodoText;
-		todoView.displayTodos();
-	},
+  changeTodo: function(position, inputValue) {
+    this.todos[position].todoText = inputValue;
+    todoView.displayTodos();
+  },
   deleteTodo: function(position) {
     this.todos.splice(position, 1);
     todoView.displayTodos();
@@ -71,13 +71,14 @@ var todoView = {
       todoLiText.id = 'editTodoInput';
       todoLiText.value = todo.todoText;
       
+      // Setting text content for the todoLiText
       if (todo.completed === true) {
-        todoLi.style.textDecoration = "line-through";
         todoLi.style.opacity = "0.4";
-        todoLi.textContent = todoButtons.todoText;
+        todoLiText.style.textDecoration = "line-through";
+        todoLiText.textContent = todo.todoText;
       }
       else {
-        todoLi.textContent = todoButtons.todoText;
+        todoLiText.textContent = todo.todoText;
       }
       // Adding buttons and input to the li element
       todoLi.appendChild(todoView.createDeleteButton());
@@ -130,26 +131,24 @@ var todoView = {
       }
     });
     todosUl.addEventListener('click', function(event) {
-			var position = event.target.parentNode.id;
+      var position = event.target.parentNode.id;
       var elementClicked = event.target.className;
       
-			if (elementClicked === 'editButton') {
-				var input = document.getElementById(position).querySelector('Input');
-				input.disabled = false;
-				input.className = "activeTextInput";
-        input.focus();
+      if (elementClicked === 'editButton') {
+        var input = document.getElementById(position).querySelector('input');
+	input.disabled = false;
         input.select();
         
         // Saving edited todo when Enter is pressed
         input.addEventListener('keypress', function(event) {
-					if(event.keyCode === 13) {
-						var textInput = input.value;
-						input.disabled = true;
-						todoButtons.changeTodo(position, textInput);
-					}
-				});
-			}
-		});
+	  if (event.keyCode === 13) {
+	    var inputValue = input.value;
+	    input.disabled = true;
+	    todoButtons.changeTodo(position, inputValue);
+	  }
+	});
+      }
+    });
   }
 };
 // Starting event listeners when the app starts
